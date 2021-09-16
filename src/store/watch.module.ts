@@ -1,5 +1,7 @@
 /* eslint-disable no-shadow */
 import api from "@/utils/backend-api";
+import twitchApi from "@/utils/twitch-api";
+import { tVideo } from "@/utils/twitch-migration";
 import { createSimpleMutation } from "@/utils/functions";
 
 const initialState = {
@@ -31,10 +33,10 @@ const actions = {
         if (!state.id) return commit("fetchError");
 
         commit("fetchStart");
-        return api
-            .video(state.id, rootState.settings.clipLangs.join(","), 1)
+        return twitchApi
+            .video(state.id)
             .then(({ data }) => {
-                commit("setVideo", data);
+                commit("setVideo", tVideo(data));
                 commit("fetchEnd");
             })
             .catch((e) => {

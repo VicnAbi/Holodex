@@ -6,7 +6,7 @@ import store from "../store";
 
 const Channel = () => import("../views/twitch/Channel.vue");
 const ChannelVideos = () => import("../views/twitch/ChannelVideos.vue");
-const Watch = () => import("../views/Watch.vue");
+const Watch = () => import("../views/twitch/Watch.vue");
 const NotFound = () => import("../views/NotFound.vue");
 
 Vue.use(VueRouter);

@@ -1,8 +1,8 @@
 // Loads store settings, exposes loadHistory and parseMessage function
-import api from "@/utils/backend-api";
+import { mdiArrowExpand } from "@mdi/js";
+import twitchApi from "@/utils/twitch-api";
 import { formatDuration, dayjs } from "@/utils/time";
 import { syncState } from "@/utils/functions";
-import { mdiArrowExpand } from "@mdi/js";
 
 export default {
     data() {
@@ -51,15 +51,10 @@ export default {
     methods: {
         loadMessages(firstLoad = false, loadAll = false) {
             this.historyLoading = true;
-            const lastTimestamp = !firstLoad && this.tlHistory[0].timestamp;
-            api.chatHistory(this.video.id, {
-                lang: this.liveTlLang,
-                ...(this.liveTlShowVerified && { verified: 1 }),
-                moderator: this.liveTlShowModerator ? 1 : 0,
-                limit: loadAll ? 10000 : this.limit,
-                ...(lastTimestamp && { before: lastTimestamp }),
-            })
+            // const lastTimestamp = !firstLoad && this.tlHistory[0].timestamp;
+            twitchApi.chatHistory()
                 .then(({ data }) => {
+                    console.log(data);
                     this.completed = data.length !== this.limit || loadAll;
                     const filtered = data.filter((m) => !this.blockedNames.has(m.name));
                     if (firstLoad) this.tlHistory = filtered.map(this.parseMessage);
