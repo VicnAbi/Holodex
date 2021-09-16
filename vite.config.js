@@ -37,7 +37,7 @@ export default ({ mode }) => {
                     // content of manifest
                     display: "standalone",
                     theme_color: "#42a5f5",
-                    name: "Holodex",
+                    name: "Nabidex",
                     background_color: "#42a5f5",
                     scope: "/",
                     start_url: "/",

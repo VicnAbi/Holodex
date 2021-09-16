@@ -5,7 +5,7 @@
   >
     <portal-target name="music-playback-background" />
 
-    <MainNav />
+    <!-- <MainNav /> -->
 
     <v-main style="transition: none">
       <PullToRefresh />
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import MainNav from "@/components/nav/MainNav.vue";
+// import MainNav from "@/components/nav/MainNav.vue";
 import ReportDialog from "@/components/common/ReportDialog.vue";
 import PullToRefresh from "@/components/common/PullToRefresh.vue";
 import PWAUpdate from "@/components/common/PWAUpdate.vue";
@@ -32,10 +32,10 @@ export default {
     name: "App",
     // default meta info
     metaInfo: {
-        title: "Holodex",
+        title: "Nabidex",
     },
     components: {
-        MainNav,
+        // MainNav,
         ReportDialog,
         PullToRefresh,
         PWAUpdate,

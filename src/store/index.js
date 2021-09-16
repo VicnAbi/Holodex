@@ -5,24 +5,21 @@ import createPersistedState from "vuex-persistedstate";
 import createMutationsSharer from "vuex-shared-mutations";
 import createMigrate from "vuex-persistedstate-migrate";
 import jwtDecode from "jwt-decode";
+import debounce from "lodash-es/debounce";
 import * as icons from "@/utils/icons";
 import { sendTokenToExtension } from "@/utils/messaging";
 
 // import { dayjs } from "@/utils/time";
 
 import backendApi from "@/utils/backend-api";
-import debounce from "lodash-es/debounce";
 import home from "./home.module";
 import channel from "./channel.module";
 import channels from "./channels.module";
 import watch from "./watch.module";
 import settings from "./settings.module";
 import favorites from "./favorites.module";
-import music from "./music.module";
-import multiview from "./multiview.module";
 import playlist from "./playlist.module";
 import history from "./history.module";
-import orgs from "./orgs.module";
 import { migrations, VUEX_STATE_VERSION } from "./migrations";
 // import socket from "./socket.module";
 
@@ -256,11 +253,7 @@ export default new Vuex.Store({
         watch,
         settings,
         favorites,
-        music,
-        multiview,
         playlist,
         history,
-        orgs,
-        // socket,
     },
 });
