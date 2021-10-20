@@ -25,23 +25,38 @@ const Playlists = () => import("../views/Playlists.vue");
 const AddPlaceholderStream = () => import("../views/AddPlaceholderStream.vue");
 const Extension = () => import("../views/Extension.vue");
 
+const ChannelNabinya = () => import("../views/ChannelNabinya.vue");
+const ChannelVideosNabinya = () => import("../views/channel_views/ChannelVideosNabinya.vue");
+
 Vue.use(VueRouter);
 
 const routes = [
     {
         path: "/",
         name: "home",
-        component: HomeFave,
-        props: { isFavPage: false },
-        beforeEnter(to, from, next) {
-            // from.name === null when first load, check settings and redirect if necessary
-            if (!from.name && store.state.settings.defaultOpen !== "home" && to.fullPath === "/") {
-                next(store.state.settings.defaultOpen);
-            } else {
-                next();
-            }
-        },
+        component: ChannelNabinya,
+        children: [
+            {
+                path: "",
+                name: "channel",
+                component: ChannelVideosNabinya,
+            },
+        ],
     },
+    // {
+    //     path: "/",
+    //     name: "home",
+    //     component: HomeFave,
+    //     props: { isFavPage: false },
+    //     beforeEnter(to, from, next) {
+    //         // from.name === null when first load, check settings and redirect if necessary
+    //         if (!from.name && store.state.settings.defaultOpen !== "home" && to.fullPath === "/") {
+    //             next(store.state.settings.defaultOpen);
+    //         } else {
+    //             next();
+    //         }
+    //     },
+    // },
     {
         // Backwards compatibility with old home
         path: "/home",
