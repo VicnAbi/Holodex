@@ -25,7 +25,7 @@
         {{ icons.mdiTwitter }}
       </v-icon>
     </v-btn>
-    <v-tooltip v-if="channel.type === 'vtuber' && !hideFav" bottom>
+    <!-- <v-tooltip v-if="channel.type === 'vtuber' && !hideFav" bottom>
       <template #activator="{ on, attrs }">
         <v-btn
           icon
@@ -37,13 +37,12 @@
           <v-icon :color="isFavorited && isLoggedIn ? 'red' : 'gray'">
             {{ isFavorited ? icons.mdiHeart : mdiHeartOutline }}
           </v-icon>
-          <!-- <span                         :left="isFavorited" v-if="isFavorited">FAV</span> -->
         </v-btn>
       </template>
       <span>
         {{ tooltip }}
       </span>
-    </v-tooltip>
+    </v-tooltip> -->
     <v-tooltip v-if="showDelete" bottom>
       <template #activator="{ on, attrs }">
         <v-btn

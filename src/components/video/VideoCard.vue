@@ -42,7 +42,7 @@
           </div>
 
           <!-- Check box for saved video (👻❌) -->
-          <v-icon
+          <!-- <v-icon
             v-if="!isPlaceholder"
             :color="hasSaved ? 'primary' : 'white'"
             class="video-card-action rounded-tr-sm"
@@ -50,7 +50,7 @@
             @click.prevent.stop="toggleSaved($event)"
           >
             {{ hasSaved ? icons.mdiCheck : icons.mdiPlusBox }}
-          </v-icon>
+          </v-icon> -->
         </div>
 
         <!-- Video duration/music indicator (👻❌) -->
@@ -176,7 +176,7 @@
         </div>
       </div>
       <!-- Vertical dots menu -->
-      <v-menu bottom :close-on-content-click="false" nudge-top="20px">
+      <!-- <v-menu bottom :close-on-content-click="false" nudge-top="20px">
         <template #activator="{ on, attrs }">
           <v-btn
             icon
@@ -191,7 +191,7 @@
           </v-btn>
         </template>
         <video-card-menu :video="data" />
-      </v-menu>
+      </v-menu> -->
     </a>
     <!-- optional breaker object to row-break into a new row. -->
     <v-list-item-action

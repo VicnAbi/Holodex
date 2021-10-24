@@ -1,6 +1,6 @@
 <template>
   <v-dialog v-model="dialog" width="500">
-    <template #activator="{ on, attrs }">
+    <!-- <template #activator="{ on, attrs }">
       <v-btn
         icon
         x-small
@@ -11,7 +11,7 @@
           {{ icons.mdiCog }}
         </v-icon>
       </v-btn>
-    </template>
+    </template> -->
 
     <v-card>
       <v-card-title>

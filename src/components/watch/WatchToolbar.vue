@@ -10,7 +10,7 @@
     </v-btn>
     <div class="watch-btn-group ml-auto d-flex">
       <slot name="buttons" />
-      <v-tooltip bottom>
+      <!-- <v-tooltip bottom>
         <template #activator="{ on, attrs }">
           <v-btn
             icon
@@ -40,7 +40,7 @@
           </v-btn>
         </template>
         <video-card-menu :video="video" />
-      </v-menu>
+      </v-menu> -->
     </div>
   </v-sheet>
 </template>

@@ -9,7 +9,7 @@
               <ChannelImg :size="avatarSize" :channel="channel" />
             </v-list-item-avatar>
             <ChannelInfo :channel="channel" />
-            <ChannelSocials :channel="channel" show-delete />
+            <!-- <ChannelSocials :channel="channel" show-delete /> -->
           </v-list-item>
         </v-list>
       </v-container>

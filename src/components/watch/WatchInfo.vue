@@ -18,7 +18,7 @@
       </router-link>
     </v-card-title>
     <v-card-subtitle>
-      <slot name="rightTitleAction">
+      <!-- <slot name="rightTitleAction">
         <v-btn
           id="video-edit-btn"
           text
@@ -39,7 +39,7 @@
               : $t("editor.enterMode")
           }}
         </v-btn>
-      </slot>
+      </slot> -->
       {{ formattedTime }}
       <template v-if="video.status === 'live'">
         • {{ $t("component.videoCard.watching", [liveViewers]) }}
@@ -50,7 +50,7 @@
           ({{ (liveViewerChange > 0 ? "+ " : "") + liveViewerChange }})
         </span>
       </template>
-      <span
+      <!-- <span
         v-show="video.topic_id"
         class="mx-1"
         style="text-transform: capitalize"
@@ -63,7 +63,7 @@
           <v-icon small>{{ icons.mdiAnimationPlay }}</v-icon>
           {{ video.topic_id }}
         </a>
-      </span>
+      </span> -->
       <!-- <v-icon>{{ icons.mdiRefresh }}</v-icon> -->
     </v-card-subtitle>
     <v-divider />
