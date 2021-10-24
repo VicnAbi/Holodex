@@ -13,6 +13,11 @@ export const axiosInstance = (() => {
     return instance;
 })();
 
+export const proxyInstance = (() => {
+    const instance = axios.create({ baseURL: "https://proxy.nupa.moe" });
+    return instance;
+})();
+
 export default {
     orgs() {
         // Use fetch api to take advantage of pre-fetch
@@ -186,9 +191,10 @@ export default {
             headers: jwt ? { Authorization: `BEARER ${jwt}` } : {},
         });
     },
-    chatHistory(videoId, query) {
-        const q = querystring.stringify(query);
-        return axiosInstance.get(`videos/${videoId}/chats?${q}`);
+    async chatHistory(videoId) {
+        const { data } = await proxyInstance.get("/github/repos/vicnabi/nabidex/issues?labels=data");
+        const issueId = data.find((i) => i.title === videoId).number;
+        return proxyInstance.get(`/github/repos/vicnabi/nabidex/issues/${issueId}/comments`);
     },
     getMentions(videoId) {
         return axiosInstance.get(`videos/${videoId}/mentions`);

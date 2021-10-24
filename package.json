@@ -20,11 +20,6 @@
       "npm run changelog --"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged"
-    }
-  },
   "dependencies": {
     "@interactjs/actions": "^1.10.11",
     "@interactjs/auto-start": "^1.10.11",

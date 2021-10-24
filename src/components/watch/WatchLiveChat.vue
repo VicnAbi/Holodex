@@ -119,10 +119,10 @@ export default {
     },
     computed: {
         showTlChat() {
-            return this.value.showTlChat;
+            return true;
         },
         showYtChat() {
-            return this.value.showYtChat;
+            return false;
         },
         liveChatUrl() {
             if (!this.video) return null;

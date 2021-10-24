@@ -4,6 +4,34 @@ import { formatDuration, dayjs } from "@/utils/time";
 import { syncState } from "@/utils/functions";
 import { mdiArrowExpand } from "@mdi/js";
 
+function timeText2Timestamp(timeText) {
+    const [h, m, s] = timeText.split(":");
+    return (s * 1 + m * 60 + h * 60 * 60) * 1000;
+}
+
+function parseLog(data) {
+    const tls = data[0].body.split(/\r?\n/);
+    const results = [];
+
+    tls.forEach((tl) => {
+        const matched = tl.match(/^(\d+:\d+:\d+) \((.+)\) (.+)/);
+        if (!matched) return;
+        const [, time, name, message] = matched;
+
+        results.push({
+            is_moderator: false,
+            is_owner: false,
+            is_tl: true,
+            is_verified: false,
+            is_vtuber: false,
+            message: `[TL] ${message}`,
+            name,
+            timestamp: timeText2Timestamp(time),
+        });
+    });
+    return results;
+}
+
 export default {
     data() {
         return {
@@ -33,6 +61,9 @@ export default {
         lang() {
             return this.$store.state.settings.lang;
         },
+        videoStartTime() {
+            return this.$store.state.watch.video.available_at;
+        },
         ...syncState("settings", [
             "liveTlStickBottom",
             "liveTlLang",
@@ -60,8 +91,14 @@ export default {
                 ...(lastTimestamp && { before: lastTimestamp }),
             })
                 .then(({ data }) => {
-                    this.completed = data.length !== this.limit || loadAll;
-                    const filtered = data.filter((m) => !this.blockedNames.has(m.name));
+                    const videoStartTime = new Date(this.videoStartTime).getTime();
+                    const parsedData = parseLog(data).map((tl) => ({
+                        ...tl,
+                        timestamp: tl.timestamp + videoStartTime,
+                    }));
+                    console.log(this.videoStartTime);
+                    this.completed = parsedData.length !== this.limit || loadAll;
+                    const filtered = parsedData.filter((m) => !this.blockedNames.has(m.name));
                     if (firstLoad) this.tlHistory = filtered.map(this.parseMessage);
                     else this.tlHistory.unshift(...filtered.map(this.parseMessage));
 

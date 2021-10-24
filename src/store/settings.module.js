@@ -5,11 +5,11 @@ import { createSimpleMutation, getUILang, getLang } from "@/utils/functions";
 const userLanguage = navigator.language || navigator.userLanguage || "en";
 
 const englishNamePrefs = new Set(["en", "es", "fr", "id", "pt", "de", "ru", "it"]);
-const lang = getLang(userLanguage);
+const lang = "en"; // getLang(userLanguage);
 
 const initialState = {
     // Language
-    lang: getUILang(userLanguage), // UI lang
+    lang: "en", // getUILang(userLanguage), // UI lang
     clipLangs: [lang],
 
     // Site

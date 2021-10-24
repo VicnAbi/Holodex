@@ -5,7 +5,7 @@
   >
     <portal-target name="music-playback-background" />
 
-    <MainNav />
+    <!-- <MainNav /> -->
 
     <v-main style="transition: none">
       <PullToRefresh />
