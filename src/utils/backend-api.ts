@@ -5,7 +5,8 @@ import { CHANNEL_URL_REGEX, VIDEO_URL_REGEX } from "./consts";
 import type { Playlist, PlaylistList } from "./types";
 
 // Need full domain for socket.io to work!!
-export const API_BASE_URL = `${window.location.origin}/api`;
+const proxySite = "https://proxy.nupa.moe";
+export const API_BASE_URL = `${proxySite}/holodex/api`;
 export const SITE_BASE_URL = `${window.location.origin}`;
 
 export const axiosInstance = (() => {
@@ -14,7 +15,7 @@ export const axiosInstance = (() => {
 })();
 
 export const proxyInstance = (() => {
-    const instance = axios.create({ baseURL: "https://proxy.nupa.moe" });
+    const instance = axios.create({ baseURL: proxySite });
     return instance;
 })();
 
