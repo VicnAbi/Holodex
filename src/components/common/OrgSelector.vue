@@ -33,7 +33,8 @@
                 class="primary--text"
                 :class="{ 'text--lighten-2': darkMode, 'text--darken-4': !darkMode }"
               >dex</span>
-              <v-tooltip
+              <span style="font-size:0.8em;"> (forked from <a href="https://holodex.net/">Holodex</a>)</span>
+              <!-- <v-tooltip
                 v-model="firstVisit"
                 right
                 bottom
@@ -52,12 +53,12 @@
                 </template>
                 <div>{{ $t("views.app.nowSupportsMultiOrg") }}</div>
                 <div>{{ $t("views.app.loginCallToAction") }}</div>
-              </v-tooltip>
+              </v-tooltip> -->
             </div>
           </slot>
         </template>
 
-        <v-list style="max-height: 300px; overscroll-behavior: contain" class="overflow-y-auto">
+        <!-- <v-list style="max-height: 300px; overscroll-behavior: contain" class="overflow-y-auto">
           <slot name="prepend-dropdown" />
           <v-list-item
             v-for="org in orgFavorites"
@@ -70,7 +71,7 @@
           <v-list-item @click="showOrgDialog = true">
             <v-list-item-title class="primary--text">{{ $t("views.favorites.showall") }}</v-list-item-title>
           </v-list-item>
-        </v-list>
+        </v-list> -->
       </v-menu>
     </slot>
     <v-dialog v-model="showOrgDialog" max-width="1000px">
@@ -200,6 +201,7 @@ export default {
         },
         currentOrg: {
             get() {
+                return { name: "Nabi" };
                 return this.$store.state.currentOrg;
             },
             set(val) {

@@ -5,7 +5,7 @@
   >
     <portal-target name="music-playback-background" />
 
-    <!-- <MainNav /> -->
+    <NabidexNav />
 
     <v-main style="transition: none">
       <PullToRefresh />
@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import MainNav from "@/components/nav/MainNav.vue";
+import NabidexNav from "@/components/nav/NabidexNav.vue";
 import ReportDialog from "@/components/common/ReportDialog.vue";
 import PullToRefresh from "@/components/common/PullToRefresh.vue";
 import PWAUpdate from "@/components/common/PWAUpdate.vue";
@@ -38,7 +38,7 @@ export default {
         title: "Holodex",
     },
     components: {
-        MainNav,
+        NabidexNav,
         ReportDialog,
         PullToRefresh,
         PWAUpdate,
