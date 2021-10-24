@@ -18,6 +18,7 @@ export default ({ mode }) => {
     const API_BASE_URL = env.API_BASE_URL ?? "https://staging.holodex.net";
     const REWRITE_API_ROUTES = !!env.REWRITE_API_ROUTES;
     return defineConfig({
+        base: "/Nabidex",
         plugins: [
             yaml(),
             createVuePlugin(),
